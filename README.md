@@ -5,5 +5,5 @@ Original code by Saumil Shah.
 
 ## Changes
 
-- Array output
+- Array output (for the HTML5 canvas heap spray library)
 - Small UI improvements
