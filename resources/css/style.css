@@ -1,0 +1,256 @@
+body {
+   background: #1975a3;
+   color: #75acc8;
+   font-family: "Helvetica","Arial","sans-serif";
+}
+
+pre {
+   width:  97%;
+   height: 90%;
+
+   white-space: pre-wrap;       /* css-3 */
+   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+   white-space: -pre-wrap;      /* Opera 4-6 */
+   white-space: -o-pre-wrap;    /* Opera 7 */
+
+   word-break: break-all;
+   font-family: 'menloregular','monacoregular','droid_sans_monoregular',"Lucida Console","DejaVu Sans Mono",monospace;
+   margin-bottom: 5px;
+   background: #e5e5e5;
+   color: #000000;
+   border: 1px solid #808080;
+   outline: none;
+   padding: 10px;
+
+   font-size: 14px;
+}
+
+textarea {
+   width: 100%;
+   height: 90%;
+   word-break: break-all;
+   font-family: 'menloregular','monacoregular','droid_sans_monoregular',"Lucida Console","DejaVu Sans Mono",monospace;
+   margin-bottom: 5px;
+   background: #e5e5e5;
+   color: #000000;
+   border: 1px solid #808080;
+   outline: none;
+   padding: 10px;
+
+   /* font-size: 14px; */ /* makes no sense defining it here */
+}
+
+textarea.rop {
+   height: auto;
+   font-family: 'menloregular','monacoregular','droid_sans_monoregular',"Lucida Console","DejaVu Sans Mono",monospace;
+   font-size: 15px;
+}
+
+input.rop {
+   background: #e5e5e5;
+   color: #000000;
+   /*border: 1px solid #808080;*/
+   border: 0px;
+   outline: none;
+   font-family: 'menloregular','monacoregular','droid_sans_monoregular',"Lucida Console","DejaVu Sans Mono",monospace;
+   font-size: 15px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+}
+
+.fullwidth {
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+.fullheight {
+   height: 100%;
+}
+
+.btn {
+   background-color:#5e9fbf;
+   -webkit-border-top-left-radius:6px;
+   -moz-border-radius-topleft:6px;
+   border-top-left-radius:6px;
+   -webkit-border-top-right-radius:6px;
+   -moz-border-radius-topright:6px;
+   border-top-right-radius:6px;
+   -webkit-border-bottom-right-radius:6px;
+   -moz-border-radius-bottomright:6px;
+   border-bottom-right-radius:6px;
+   -webkit-border-bottom-left-radius:6px;
+   -moz-border-radius-bottomleft:6px;
+   border-bottom-left-radius:6px;
+   border:0px;
+   text-indent:0px;
+   display:inline-block;
+   color:#ffffff;
+   font-family:Arial;
+   font-size:12px;
+   font-weight:normal;
+   font-style:normal;
+   height:20px;
+   line-height:20px;
+   text-decoration:none;
+   text-align:center;
+   padding-left:6px;
+   padding-right:6px;
+   margin-left:2px;
+}
+
+.btn:hover {
+   background-color:#125272;
+}
+
+.btn:active {
+   position:relative;
+   top:1px;
+}
+
+.btn:focus {
+   outline: 0;
+}
+
+.dontshow {
+   display: none;
+}
+
+.mono {
+   font-family: 'menloregular','monacoregular','droid_sans_monoregular',"Lucida Console","DejaVu Sans Mono",monospace;
+   font-size: 16px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+.roptext {
+   color: #c8dae8;
+}
+
+.ropoutput {
+   background: #75acc8;
+   border: 0px;
+}
+
+svg.diagram {
+   display: block;
+   text-align: center;
+   stroke-linecap: round;
+   stroke-width: 2px;
+}
+
+@font-face {
+    font-family: 'menloregular';
+    src: url('../fonts/Menlo-Regular_gdi.eot');
+    src: url('../fonts/Menlo-Regular_gdi.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Menlo-Regular_gdi.woff') format('woff'),
+         url('../fonts/Menlo-Regular_gdi.ttf') format('truetype'),
+         url('../fonts/Menlo-Regular_gdi.svg#Menlo-Regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-2666;
+}
+
+@font-face {
+    font-family: 'monacoregular';
+    src: url('../fonts/monaco-webfont.eot');
+    src: url('../fonts/monaco-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/monaco-webfont.woff') format('woff'),
+         url('../fonts/monaco-webfont.ttf') format('truetype'),
+         url('../fonts/monaco-webfont.svg#monacoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'droid_sans_monoregular';
+    src: url('../fonts/droidsansmono-webfont.eot');
+    src: url('../fonts/droidsansmono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/droidsansmono-webfont.woff') format('woff'),
+         url('../fonts/droidsansmono-webfont.ttf') format('truetype'),
+         url('../fonts/droidsansmono-webfont.svg#droid_sans_monoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'consolasregular';
+    src: url('../fonts/consolas-webfont.eot');
+    src: url('../fonts/consolas-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/consolas-webfont.woff') format('woff'),
+         url('../fonts/consolas-webfont.ttf') format('truetype'),
+         url('../fonts/consolas-webfont.svg#consolasregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pcdosregular';
+    src: url('../fonts/perfect_dos_vga_437_win-webfont.eot');
+    src: url('../fonts/perfect_dos_vga_437_win-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/perfect_dos_vga_437_win-webfont.woff') format('woff'),
+         url('../fonts/perfect_dos_vga_437_win-webfont.ttf') format('truetype'),
+         url('../fonts/perfect_dos_vga_437_win-webfont.svg#perfect_dos_vga_437_winRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'trash_eightiesregular';
+    src: url('../fonts/trash-eighties-webfont.eot');
+    src: url('../fonts/trash-eighties-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/trash-eighties-webfont.woff2') format('woff2'),
+         url('../fonts/trash-eighties-webfont.woff') format('woff'),
+         url('../fonts/trash-eighties-webfont.ttf') format('truetype'),
+         url('../fonts/trash-eighties-webfont.svg#trash_eightiesregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'press_start_kregular';
+    src: url('../fonts/press-start.k-webfont.eot');
+    src: url('../fonts/press-start.k-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/press-start.k-webfont.woff2') format('woff2'),
+         url('../fonts/press-start.k-webfont.woff') format('woff'),
+         url('../fonts/press-start.k-webfont.ttf') format('truetype'),
+         url('../fonts/press-start.k-webfont.svg#press_start_kregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'c64_pro_monoregular';
+    src: url('../fonts/c64_pro_mono_v1.0-style-webfont.eot');
+    src: url('../fonts/c64_pro_mono_v1.0-style-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/c64_pro_mono_v1.0-style-webfont.woff2') format('woff2'),
+         url('../fonts/c64_pro_mono_v1.0-style-webfont.woff') format('woff'),
+         url('../fonts/c64_pro_mono_v1.0-style-webfont.ttf') format('truetype'),
+         url('../fonts/c64_pro_mono_v1.0-style-webfont.svg#c64_pro_monoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kongtextregular';
+    src: url('../fonts/kongtext-webfont.eot');
+    src: url('../fonts/kongtext-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/kongtext-webfont.woff2') format('woff2'),
+         url('../fonts/kongtext-webfont.woff') format('woff'),
+         url('../fonts/kongtext-webfont.ttf') format('truetype'),
+         url('../fonts/kongtext-webfont.svg#kongtextregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'input_monoregular';
+    src: url('../fonts/inputmono-regular-webfont.eot');
+    src: url('../fonts/inputmono-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/inputmono-regular-webfont.woff2') format('woff2'),
+         url('../fonts/inputmono-regular-webfont.woff') format('woff'),
+         url('../fonts/inputmono-regular-webfont.ttf') format('truetype'),
+         url('../fonts/inputmono-regular-webfont.svg#input_monoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

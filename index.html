@@ -1,0 +1,65 @@
+<html>
+<head>
+<link href="resources/css/fluid_grid.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="resources/css/style.css" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="build_rop_chain.js"></script>
+<script src="resources/js/common.js"></script>
+
+</head>
+<body onload="init()">
+<div class="container container_12 roptext">
+<h2 class="grid_12">Exploitlab - ROP Notepad</h2>
+<div class="grid_12"><div class="grid_2">Start Address</div></div>
+<div class="grid_12">
+   <input id="start_address" class="grid_2 rop" type="text">
+</div>
+<div class="grid_12">&nbsp;</div>
+<div class="clear">&nbsp;</div>
+<div class="grid_12">
+   <div class="grid_12">
+      <span class="grid_2">Address</span>
+      <span class="grid_2">Value</span>
+      <span class="grid_4">Comment</span>
+      <span class="grid_1"></span>
+      <span class="grid_1"></span>
+   </div>
+</div>
+<div class="grid_12">&nbsp;</div>
+<div class="clear">&nbsp;</div>
+<div id="output" class="grid_12"></div>
+<div class="clear">&nbsp;</div>
+<div class="grid_12">&nbsp;</div>
+<div class="grid_12">
+   <!--
+   <input class="btn" type="button" onclick="appendRow()" value="Add Gadget">
+   <span style="margin-left: 20px;">
+
+   -->
+   <span class="grid_1">
+     <input class="btn" type="button" onclick="generateJs()" value="Generate JS">
+     </input>
+   </span>
+
+   <span class="grid_11">
+     Output type:
+     <input type="radio" onclick="generateJs()" name="ropOutputType" id="ropOutputString" checked value="tString">String</input>
+     <input type="radio" onclick="generateJs()" name="ropOutputType" id="ropOutputArray" value="tArray">Array</input>
+   </span>
+</div>
+<div class="clear">&nbsp;</div>
+<div class="grid_12">&nbsp;</div>
+
+<textarea readonly class="rop grid_10 ropoutput" id="rop_output" rows="16"></textarea>
+
+<div class="grid_12">
+  Change font: <span id="fonts" style='margin-left: 10px;'>
+  </span>
+</div>
+
+
+</div>
+
+
+</body>
+</html>
