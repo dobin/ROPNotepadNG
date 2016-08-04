@@ -5,5 +5,6 @@ Original code by Saumil Shah.
 
 ## Changes
 
-- Array output (for the HTML5 canvas heap spray library)
+- Import/Export of the table (to support save/load rudimentary)
+- JS-array ropchain output (for the HTML5 canvas heap spray library)
 - Small UI improvements

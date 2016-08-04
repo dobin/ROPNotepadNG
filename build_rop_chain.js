@@ -1,4 +1,3 @@
-var nextAddress = 0x08082020;
 var varName = "ropchain";
 var payloadString = "";
 var rows = 0;
@@ -31,6 +30,13 @@ function makeNewRow() {
    inputComment.className = "grid_4 rop";
    inputComment.onchange = generateJs;
 
+   var inputDescription = document.createElement("input");
+   inputDescription.setAttribute("name", "description");
+   inputDescription.type = "text";
+   inputDescription.className = "grid_2 rop";
+   inputDescription.onchange = generateJs;
+
+
    var insertRow = document.createElement("input");
    insertRow.type = "button";
    insertRow.className = "grid_1 btn";
@@ -50,6 +56,7 @@ function makeNewRow() {
    row.appendChild(address);
    row.appendChild(inputContent);
    row.appendChild(inputComment);
+   row.appendChild(inputDescription);
    row.appendChild(insertRow);
    row.appendChild(deleteRow);
 
@@ -65,20 +72,21 @@ function appendRow() {
 }
 
 function recalcRows() {
-   var outputRows = document.getElementById("output").childNodes;
-   var i;
+  var nextAddress = parseInt(document.getElementById("start_address").value);
 
-   rows = outputRows.length;
-   nextAddress = parseInt(document.getElementById("start_address").value);
+  var outputRows = document.getElementById("output").childNodes;
+  var i;
+  rows = outputRows.length;
 
-   for(i = 0; i < rows; i++) {
-      outputRows[i].id = i + 1;
-      outputRows[i].children.address.textContent = toHex(nextAddress);
-      nextAddress += 4;
-   }
+  for(i = 0; i < rows; i++) {
+     outputRows[i].id = i + 1;
+     outputRows[i].children.address.textContent = toHex(nextAddress);
+     nextAddress += 4;
+  }
 
-   generateJs();
+  generateJs();
 }
+
 
 function deleteThisRow() {
    var containingRow = this.parentNode;
@@ -116,7 +124,11 @@ function recalcAddresses() {
    myValue = toHex(myValue);
    this.value = myValue;
 
-   nextAddress = parseInt(this.value);
+   realRecalcAddresses(this.value);
+}
+
+function realRecalcAddresses(addr) {
+   var nextAddress = parseInt(addr);
 
    var divOutput = document.getElementById("output");
    divNodes = divOutput.childNodes;
@@ -127,10 +139,11 @@ function recalcAddresses() {
    }
 }
 
+
 function init() {
    loadFontButtons(true);
    divStartAddress = document.getElementById("start_address");
-   divStartAddress.value = toHex(nextAddress);
+   divStartAddress.value = toHex(0x08082020);
    divStartAddress.onchange = recalcAddresses;
 
    //generateJs();
@@ -142,30 +155,11 @@ function init() {
 }
 
 
-
-
 function generateJs() {
   var outputType;
+
   var ropLines = [];
-  var i=0;
-
-  /* convert UI data to a data structure */
-  var divOutput = document.getElementById("output");
-  var divNodes = divOutput.childNodes;
-  for(i = 0; i < divNodes.length; i++) {
-    var address = divNodes[i].childNodes[0].innerHTML;
-    var content = divNodes[i].childNodes[1].value;
-    var comment = divNodes[i].childNodes[2].value;
-
-    var line = {
-      address: address,
-      content: content,
-      comment: comment,
-    }
-
-    ropLines.push(line);
-  }
-
+  ropLines = parseUiData();
 
   /* generate output based on data structure */
   var payloadString;
@@ -255,4 +249,78 @@ function generateJsArray(ropLines) {
   }
 
   return payloadString;
+}
+
+
+function parseUiData() {
+  var ropLines = [];
+  var i=0;
+
+  /* convert UI data to a data structure */
+  var divOutput = document.getElementById("output");
+  var divNodes = divOutput.childNodes;
+  for(i = 0; i < divNodes.length; i++) {
+    var address = divNodes[i].childNodes[0].innerHTML;
+    var content = divNodes[i].childNodes[1].value;
+    var comment = divNodes[i].childNodes[2].value;
+    var description = divNodes[i].childNodes[3].value;
+
+    var line = {
+      address: address,
+      content: content,
+      comment: comment,
+      description: description,
+    }
+
+    ropLines.push(line);
+  }
+
+  return ropLines;
+}
+
+
+function exportData() {
+  var ropLines = parseUiData();
+  var baseAddr = parseInt(document.getElementById("start_address").value);
+
+  var data = {
+    baseAddr: baseAddr,
+    ropLines: ropLines,
+  }
+  data = JSON.stringify(data);
+  data = btoa(data);
+  prompt("Data", data);
+}
+
+
+function importData() {
+  var data = prompt("Data");
+  data = atob(data);
+
+  if (data.length <= 4) {
+    return;
+  }
+
+  data = JSON.parse(data);
+
+  var divOutput = document.getElementById("output");
+  var divNodes = divOutput.childNodes;
+
+  while (divNodes.length < data.length) {
+    appendRow();
+  }
+
+  var n;
+  for(n = 0; n < data.ropLines.length; n++) {
+    // do not write addresses, it will get recalculated below
+    //divNodes[i].childNodes[0].innerHTML = data[n].address;
+    divNodes[n].childNodes[1].value = data.ropLines[n].content;
+    divNodes[n].childNodes[2].value = data.ropLines[n].comment;
+    divNodes[n].childNodes[3].value = data.ropLines[n].description;
+  }
+
+  // set baseAddr
+  divStartAddress = document.getElementById("start_address");
+  divStartAddress.value = toHex(data.baseAddr);
+  realRecalcAddresses(data.baseAddr);
 }
